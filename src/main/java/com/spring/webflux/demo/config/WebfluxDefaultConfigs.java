@@ -1,4 +1,4 @@
-package com.spring.webflux.demo.service;
+package com.spring.webflux.demo.config;
 
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.WebHandler;
 
 @Component
@@ -23,7 +24,8 @@ public class WebfluxDefaultConfigs {
 	@Autowired(required = false)
 	private List<WebHandler> webHandlers;
 	
-	
+	@Autowired(required = false)
+	private List<WebClient> webClients;
 	
 	@PostConstruct
 	public void printConfigs() {
@@ -35,6 +37,9 @@ public class WebfluxDefaultConfigs {
 		}
 		if (Objects.nonNull(webHandlers)) {			
 			webHandlers.forEach(webHandler -> System.err.println("WebHandler --> " + webHandler.getClass().getCanonicalName()));
+		}
+		if (Objects.nonNull(webClients)) {			
+			webClients.forEach(webClient -> System.err.println("WebClient --> " + webClient.getClass().getCanonicalName()));
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.spring.webflux.demo.vo;
+package com.spring.webflux.demo.way1.vo;
 
 import java.io.Serializable;
 
